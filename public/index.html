@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Delive Form</title>
+
+    <!--Bootstrap and custom CSS-->
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x' crossorigin='anonymous'>
+    <link rel='stylesheet' href='styles/index.css'>
+    <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js' integrity='sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4' crossorigin='anonymous'></script>
+  </head>
+  <body>
+      <div class='container-fluid' id='main-container'>
+        <div class='row justify-content-center text-center' id='logo-container'>
+          <div class='col-sm-6'>
+            <div class='row p-5' id='card-container'>
+              <div class='card p-0 '>
+                <img src='./images/delive-logo-transparent.png' class='card-img-top mx-auto logo-size m-3' alt='delive' id='logo'>
+                <div class='card-body'>
+                  <div class='progress' style='height: 5px;'>
+                    <div class='progress-bar' role='progressbar' id='progress' style='background-color: #fb5c3c;'></div>
+                  </div>
+                  <h4 class='text-center mt-2'>Reserve já!</h4>
+                  <form id='forms'>
+                    <!-- Primeira página -->
+                    <label for='selectLocal' id='selectLocalLabel'>Selecione o local mais próximo de você</label>
+                    <select class='form-select mt-2' required id='selectLocal' aria-label='locais'>
+                      <option selected disabled value=''>Escolher</option>
+                      <option >Cachorrão Lanches - R. Amadeo Rossi, 164 - Morro do Espelho</option>
+                    </select>
+                    <div id='errorMessageSelect' class='invalid-feedback'>
+                      Selecione uma opção.
+                    </div>
+                    <!-- Segunda página -->
+                    <label for='nameInput' id='nameLabel' class='mt-2'>Informe seu nome completo</label>
+                    <input class='form-control form-control-sm mt-2' id='name' type='text' placeholder='Seu nome completo' aria-label='nameInput' required>
+                    <div id='errorMessageName' class='invalid-feedback'>
+                      Por favor, informe seu nome.
+                    </div>
+                    <label for='emailInput' id='emailLabel' class='mt-2'>Informe seu email</label>
+                    <input class='form-control form-control-sm mt-2' id='email' type='email' placeholder='Seu email' aria-label='emailInput' required>
+                    <div id='errorMessageEmail' class='invalid-feedback'>
+                      Por favor, informe seu email.
+                    </div>
+                    <label for='phoneInput' id='phoneLabel' class='mt-2'>Informe seu número</label>
+                    <input class='form-control form-control-sm mt-2' type='tel' id='phone' name='phoneInput' placeholder='(xx)999999999' required>
+                    <div id='errorMessagePhone' class='invalid-feedback'>
+                      Por favor, informe seu número.
+                    </div>
+                    <!-- Terceira página -->
+                    <label for='emailInputReceiver' id='emailReceiverLabel' class='mt-2'>Informe o email de quem irá retirar</label>
+                    <input class='form-control form-control-sm mt-2' id='emailReceiver' type='email' placeholder='Email' aria-label='emailInputReceiver' required>
+                    <div id='errorMessageEmailReceiver' class='invalid-feedback'>
+                      Por favor, informe um email.
+                    </div>
+                    <label for='phoneInputReceiver' id='phoneReceiverLabel' class='mt-2'>Informe seu número</label>
+                    <input class='form-control form-control-sm mt-2' type='tel' id='phoneReceiver' name='phoneInputReceiver' placeholder='(xx)999999999' required>
+                    <div id='errorMessagePhoneReceiver' class='invalid-feedback'>
+                      Por favor, informe um número.
+                    </div>
+                    <label for='observationsInput' id='observationsInputLabel' class='mt-2'>Observações adicionais</label>
+                    <textarea class='form-control mt-2' id='observationsInput' name='observationsInput' rows='2'></textarea>
+                    <div class='mt-3 text-center'>
+                      <button type='button' class='btn float-start' style='background-color: #044890;color: white;' id='btnBack'>Anterior</button>
+                      <button type='submit' class='btn' style='background-color: #fb5c3c;color: white;' id='btnSubmit'>Enviar</button>
+                      <button type='button' class='btn float-end' style='background-color: #ff4864;color: white;' id='btnNext'>Próximo</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> 
+      <!-- Modal -->
+      <div class='modal fade' id='staticBackdrop' data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true'>
+        <div class='modal-dialog modal-dialog-centered'>
+          <div class='modal-content'>
+            <div class='modal-body text-center'>
+              <img src='./images/delive-logo-transparent.png' class='mx-auto d-block' style='width: 200px; height: 110px;' alt='delive'>
+              <br/>
+              <p>Sua solicitação foi registrada! Entraremos em contato para enviar os dados para pagamento. Obrigado!</p>
+              <button type='button' class='btn' style='background-color: #ff4864;color: white;' onclick='window.location.reload()'>Enviar uma nova resposta</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <!-- update the version number as needed -->
+    <script src='/__/firebase/8.6.0/firebase-app.js'></script>
+    <!-- include only the Firebase features as you need -->
+    <script src="/__/firebase/8.6.0/firebase-firestore.js"></script>
+    <!-- 
+      initialize the SDK after all desired features are loaded, set useEmulator to false
+      to avoid connecting the SDK to running emulators.
+    -->
+    <script src='/__/firebase/init.js?useEmulator=true'></script>
+    <!--Custom JS -->
+    <script src='./js/index.js'></script>
+  </body>
+  </html>
+  

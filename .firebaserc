@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "default": "delive-form",
+    "delive": "delive-form"
+  }
+}
