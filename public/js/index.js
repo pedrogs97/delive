@@ -16,6 +16,9 @@ const phonePersonErrorInput = document.getElementById('errorMessagePhone');
 const emailReceiverLabelInput = document.getElementById('emailReceiverLabel');
 const emailReceiverInput = document.getElementById('emailReceiver');
 const emailReceiverErrorInput = document.getElementById('errorMessageEmailReceiver');
+const nameReceiverLabelInput = document.getElementById('nameReceiverLabel');
+const nameReceiverInput = document.getElementById('nameReceiver');
+const nameReceiverErrorInput = document.getElementById('errorMessageNameReceiver');
 const phoneReceiverLabelInput = document.getElementById('phoneReceiverLabel');
 const phoneReceiverInput = document.getElementById('phoneReceiver');
 const phoneReceiverErrorInput = document.getElementById('errorMessagePhoneReceiver');
@@ -43,6 +46,9 @@ const showPage0 = ()=>{
     emailReceiverInput.hidden = true;
     emailReceiverLabelInput.hidden = true;
     emailReceiverErrorInput.hidden = true;
+    nameReceiverInput.hidden = true;
+    nameReceiverLabelInput.hidden = true;
+    nameReceiverErrorInput.hidden = true;
     phoneReceiverInput.hidden = true;
     phoneReceiverLabelInput.hidden = true;
     phoneReceiverErrorInput.hidden = true;
@@ -69,6 +75,9 @@ const showPage1 = ()=>{
     emailReceiverInput.hidden = true;
     emailReceiverLabelInput.hidden = true;
     emailReceiverErrorInput.hidden = true;
+    nameReceiverInput.hidden = true;
+    nameReceiverLabelInput.hidden = true;
+    nameReceiverErrorInput.hidden = true;
     phoneReceiverInput.hidden = true;
     phoneReceiverLabelInput.hidden = true;
     phoneReceiverErrorInput.hidden = true;
@@ -95,6 +104,9 @@ const showPage2 = ()=>{
     emailReceiverInput.hidden = false;
     emailReceiverLabelInput.hidden = false;
     emailReceiverErrorInput.hidden = false;
+    nameReceiverInput.hidden = false;
+    nameReceiverLabelInput.hidden = false;
+    nameReceiverErrorInput.hidden = false;
     phoneReceiverInput.hidden = false;
     phoneReceiverLabelInput.hidden = false;
     phoneReceiverErrorInput.hidden = false;
@@ -170,7 +182,7 @@ const validatedForms = (page) =>{
     }
 }
 
-function saveMessage(local, namePerson, emailPerson, phonePerson, emailReceiver, phoneReceiver, observations) {
+function saveMessage(local, namePerson, emailPerson, phonePerson, emailReceiver, nameReceiver, phoneReceiver, observations) {
     var data = undefined;
     if (observations !== '' || observations !== undefined)
     {
@@ -180,6 +192,7 @@ function saveMessage(local, namePerson, emailPerson, phonePerson, emailReceiver,
             email: emailPerson,
             phone: phonePerson,
             receiverEmail: emailReceiver,
+            receiverName: nameReceiver,
             receiverPhone: phoneReceiver,
             observations: observations,
             timestamp: firebase.firestore.FieldValue.serverTimestamp(),
@@ -193,6 +206,7 @@ function saveMessage(local, namePerson, emailPerson, phonePerson, emailReceiver,
             email: emailPerson,
             phone: phonePerson,
             receiverEmail: emailReceiver,
+            receiverName: nameReceiver,
             receiverPhone: phoneReceiver,
             timestamp: firebase.firestore.FieldValue.serverTimestamp(),
         }
@@ -221,7 +235,7 @@ function saveMessage(local, namePerson, emailPerson, phonePerson, emailReceiver,
 const onFormSubmit = (e) => {
     e.preventDefault();
     console.log(observationsInput.value);
-    saveMessage(selectLocalInput.value, namePersonInput.value, emailPersonInput.value, phonePersonInput.value, emailReceiverInput.value, phoneReceiverInput.value, observationsInput.value);
+    saveMessage(selectLocalInput.value, namePersonInput.value, emailPersonInput.value, phonePersonInput.value, emailReceiverInput.value, nameReceiverInput.value, phoneReceiverInput.value, observationsInput.value);
 }
 
 const checkSetupFirebase =  ()=> {
@@ -286,6 +300,10 @@ phonePersonInput.addEventListener('change', ()=>{
 });
 
 emailReceiverInput.addEventListener('change', ()=>{
+    validatedForms();
+});
+
+nameReceiverInput.addEventListener('change', ()=>{
     validatedForms();
 });
 

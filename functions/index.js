@@ -12,6 +12,7 @@ exports.sendEmail = functions.firestore
         Telefone: ${data.phone}
         Dados de quem irá receber:
         E-mail: ${data.receiverEmail}
+        Nome: ${data.nameReceiver}
         Telefone: ${data.receiverPhone}
         Observações:
         ${data.observations}`;
